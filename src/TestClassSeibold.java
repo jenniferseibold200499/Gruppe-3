@@ -9,5 +9,6 @@ public class TestClassSeibold {
 		
 		System.out.println("TorstenHS39 ist auch dabei");
 		System.out.println("allo ryanstekken is auch dabei");
+		System.out.println("UHU ist kein Vogel sondern Kleber!");
 	}
 }
