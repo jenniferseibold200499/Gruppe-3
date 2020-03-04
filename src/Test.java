@@ -8,7 +8,7 @@ public class Test {
 		double x = scanner.nextDouble();
 
 		Scanner newScanner = new Scanner(System.in);
-		System.out.println("Geben sie ihre Grösse in CM ein");
+		System.out.println("GsffsfefefwwfwefCM ein");
 		double y = scanner.nextDouble();
 
 		double groesse = y / 100;
