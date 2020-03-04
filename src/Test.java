@@ -19,5 +19,7 @@ public class Test {
 
 		scanner.close();
 		newScanner.close();
+
+		System.out.println("allo ryanstekken is auch dabei");
 	}
 }
