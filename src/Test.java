@@ -4,7 +4,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Geben sie ihr Gewicht ein");
+		System.out.println("Geben sie ihrr Gewicht ein");
 		double x = scanner.nextDouble();
 
 		Scanner newScanner = new Scanner(System.in);
