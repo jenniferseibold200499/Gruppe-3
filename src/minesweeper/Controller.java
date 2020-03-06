@@ -4,25 +4,23 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
- *
- * @author jsaalfel
+ * @author FIS-12 (ryanstekken93 // JH)
  */
 public class Controller extends MouseAdapter {
 
     private Field field;
     private Model model;
 
-    /**
-     * Construcor
+    /** @param field bezeichnet das Spielfeld
      *
-     * @param field field of the gam
      */
+
     public Controller(Field field) {
         this.field = field;
     }
 
     /**
-     * change the field
+     * für Änderungen des Typs field (Spielfeld)
      * @param field
      */
     public void updateField(Field field) {
@@ -30,7 +28,7 @@ public class Controller extends MouseAdapter {
     }
 
     /**
-     * Constructor
+     * Konstruktor
      *
      * @param model
      */
@@ -39,10 +37,12 @@ public class Controller extends MouseAdapter {
     }
     
     /**
-     * Checks for Mouseclicks and class the Method in the model
+     * Sucht nach Mausklicks innerhalb des Spielfelds
+     * class the Method in the model
      *
-     * @param e the MouseEvent that just happened
+     * @param e the MouseEvent welches gerade passiert, wird überschrieben!
      */
+
     @Override
     public void mouseClicked(MouseEvent e) {
 
