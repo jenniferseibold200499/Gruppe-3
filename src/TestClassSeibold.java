@@ -11,5 +11,6 @@ public class TestClassSeibold {
 		System.out.println("allo ryanstekken is auch dabei");
 		System.out.println("UHU ist kein Vogel sondern Kleber!");
 		System.out.println("ihr stinkt");
+		System.out.println("LANGEMARK /n Lage, Auftrag, Nachbarn, Grenzen, Eröffnungslinie, Meldung / Alarmierung, Ablösung, Parole / Kennwort, Platz des Gruppenführers");
 	}
 }
