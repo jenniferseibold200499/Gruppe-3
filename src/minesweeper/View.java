@@ -9,119 +9,113 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-
 public class View extends JPanel implements Observer {
 
-    private static final long serialVersionUID = 1L;
-    private JPanel view;
-    private JLabel bombs, gameState, timer;
-    private ButtonView[][] fields;
-    private Model model;
+	private static final long serialVersionUID = 1L;
+	private JPanel view;
+	private JLabel bombs, gameState, timer;
+	private ButtonView[][] fields;
+	private Model model;
 
-    View(Model model) {
-        this.model = model;
-        this.setLayout(new BorderLayout());
-        this.view = new JPanel();
-        this.bombs = setLabel(this.bombs, "Bombs:  " + Integer.toString(model.remainingBombs()));
-        this.gameState = setLabel(this.gameState, "Status:  " + model.getState());
-        this.timer = setLabel(this.timer, "Time:  " + model.getTimer());
+	View(Model model) {
 
-        this.add(this.bombs, BorderLayout.WEST);
-        this.add(this.gameState, BorderLayout.EAST);
-        this.add(this.timer, BorderLayout.CENTER);
-        this.add(restartButton(), BorderLayout.NORTH);
-        this.fields = new ButtonView[model.getHeight()][model.getWidth()];
-        this.model.addObserver(this);
+		// erstellen der Buttons
+		this.model = model;
+		this.setLayout(new BorderLayout());
+		this.view = new JPanel();
+		this.bombs = setLabel(this.bombs, "Bombs:  " + Integer.toString(model.remainingBombs()));
+		this.gameState = setLabel(this.gameState, "Status:  " + model.getState());
+		this.timer = setLabel(this.timer, "Time:  " + model.getTimer());
 
-        this.view.setLayout(new GridLayout(model.getHeight(), model.getWidth()));
-        buildbuttons();
-        this.add(view, BorderLayout.SOUTH);
+		// Festlegung/Anordnung der Buttons und des Minenfeldes
+		this.add(this.bombs, BorderLayout.WEST);
+		this.add(this.gameState, BorderLayout.EAST);
+		this.add(this.timer, BorderLayout.CENTER);
+		this.add(restartButton(), BorderLayout.NORTH);
+		this.fields = new ButtonView[model.getHeight()][model.getWidth()];
+		this.model.addObserver(this);
 
-    }
+		this.view.setLayout(new GridLayout(model.getHeight(), model.getWidth()));
+		buildbuttons();
+		this.add(view, BorderLayout.SOUTH);
 
-     // erneuerung der View
-     
-    @Override
-    public void update(Observable obs, Object o) {
-		
+	}
 
-        // wenn das Objekt leer ist, muss alles geupdatet werden
-        if (o != null) {
-            updateButtons();
-        }
-        this.bombs = setLabel(this.bombs, "Bombs:  " + Integer.toString(model.remainingBombs()));
-        this.gameState = setLabel(this.gameState, "Status:  " + model.getState());
-        this.timer = setLabel(this.timer, "Time:  " + this.model.getTimer());
+	// erneuerung der View
 
-    }
+	@Override
+	public void update(Observable obs, Object o) {
 
-  
-     
-     // string macht den Text
+		// wenn das Objekt leer ist, muss alles geupdatet werden
+		if (o != null) {
+			updateButtons();
+		}
+		this.bombs = setLabel(this.bombs, "Bombs:  " + Integer.toString(model.remainingBombs()));
+		this.gameState = setLabel(this.gameState, "Status:  " + model.getState());
+		this.timer = setLabel(this.timer, "Time:  " + this.model.getTimer());
 
-     
-    private JLabel setLabel(JLabel label, String string) {
-        if (!(label instanceof JLabel)) {
-            label = new JLabel("");
-        }
-        label.setText(string);
-        label.setPreferredSize(new Dimension(100, 40));
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        return label;
+	}
 
-    }
+	// string macht den Text
 
-     //return view
-    
-    public JPanel getview() {
-        return this.view;
-    }
+	private JLabel setLabel(JLabel label, String string) {
+		if (!(label instanceof JLabel)) {
+			label = new JLabel("");
+		}
+		label.setText(string);
+		label.setPreferredSize(new Dimension(100, 40));
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		return label;
 
-    
-     // erstellt den restart Button 
-    
-    public JButton restartButton() {
-        JButton button = new JButton("Restart");
-        button.setPreferredSize(new Dimension(20, 40));
-        Controller controller = new Controller(model);
-        button.addMouseListener(controller);
-        return button;
+	}
 
-    }
+	// return view
 
-    
-    public void updateButtons() {
+	public JPanel getview() {
+		return this.view;
+	}
 
-        removeButtons();
+	// erstellung des restart Buttons
 
-        buildbuttons();
+	public JButton restartButton() {
+		JButton button = new JButton("Restart");
+		button.setPreferredSize(new Dimension(20, 40));
+		Controller controller = new Controller(model);
+		button.addMouseListener(controller);
+		return button;
 
-    }
+	}
 
-  
-    private void removeButtons() {
-        for (int i = 0; i < this.model.getHeight(); i++) {
-            for (int j = 0; j < this.model.getWidth(); j++) {
+	public void updateButtons() {
 
-                this.view.remove(fields[i][j].getButton());
+		removeButtons();
 
-            }
+		buildbuttons();
 
-        }
+	}
 
-    }
+	private void removeButtons() {
+		for (int i = 0; i < this.model.getHeight(); i++) {
+			for (int j = 0; j < this.model.getWidth(); j++) {
 
-   
-    private void buildbuttons() {
+				this.view.remove(fields[i][j].getButton());
 
-        for (int i = 0; i < this.model.getHeight(); i++) {
-            for (int j = 0; j < this.model.getWidth(); j++) {
-                ButtonView button = new ButtonView(this.model.getField(i, j));
-                fields[i][j] = button;
-                this.view.add(button.getButton());
+			}
 
-            }
+		}
 
-        }
-    }
+	}
+
+	private void buildbuttons() {
+
+		for (int i = 0; i < this.model.getHeight(); i++) {
+			for (int j = 0; j < this.model.getWidth(); j++) {
+				ButtonView button = new ButtonView(this.model.getField(i, j));
+				fields[i][j] = button;
+				this.view.add(button.getButton());
+
+			}
+
+		}
+	}
 }
