@@ -5,7 +5,7 @@ import java.util.Observable;
 /**
  * Model for Minesweeper
  *
- * @author jsaalfeld
+ * @author ryanstekken93, Herbsti91
  *
  */
 public class Model extends Observable {
