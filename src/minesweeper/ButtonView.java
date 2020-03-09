@@ -29,13 +29,13 @@ public class ButtonView extends JButton implements Observer {
 		return this.button;
 	}
 
-	// macht einen Knopf unsichtbar
+	//macht einen Knopf unsichtbar
 
 	public void setUnvisible() {
 		this.button.setVisible(false);
 		this.field.reveal();
 	}
-	// veränderung der Farbe des Minenfeldes
+	//veränderung der Farbe des Minenfeldes
 	@Override
 	public void update(Observable obs, Object o) {
 		if (field.getRevealed() == true) {

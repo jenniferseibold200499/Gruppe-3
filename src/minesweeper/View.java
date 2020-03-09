@@ -41,7 +41,7 @@ public class View extends JPanel implements Observer {
 
 	}
 
-	// erneuerung der View
+	//erneuerung der View
 
 	@Override
 	public void update(Observable obs, Object o) {
