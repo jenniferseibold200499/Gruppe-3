@@ -9,10 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-/**
- * View for the Minesweeper Game
- * @author jsaalfel
- */
+
 public class View extends JPanel implements Observer {
 
     private static final long serialVersionUID = 1L;
@@ -21,12 +18,7 @@ public class View extends JPanel implements Observer {
     private ButtonView[][] fields;
     private Model model;
 
-    /**
-     * Constructor
-     *
-     * @param model sets the standard values for the view
-     */
-    public View(Model model) {
+    View(Model model) {
         this.model = model;
         this.setLayout(new BorderLayout());
         this.view = new JPanel();
@@ -47,14 +39,13 @@ public class View extends JPanel implements Observer {
 
     }
 
-    /**
-     * updates the view
-     */
+     // erneuerung der View
+     
     @Override
     public void update(Observable obs, Object o) {
-		// TODO Auto-generated method 
+		
 
-        // If object is empty, then update all
+        // wenn das Objekt leer ist, muss alles geupdatet werden
         if (o != null) {
             updateButtons();
         }
@@ -64,12 +55,11 @@ public class View extends JPanel implements Observer {
 
     }
 
-    /**
-     *
-     * @param label
-     * @param string sets the text
-     * @return returns the label wit the string setted
-     */
+  
+     
+     // string macht den Text
+
+     
     private JLabel setLabel(JLabel label, String string) {
         if (!(label instanceof JLabel)) {
             label = new JLabel("");
@@ -81,18 +71,15 @@ public class View extends JPanel implements Observer {
 
     }
 
-    /**
-     * @return the view
-     */
+     //return view
+    
     public JPanel getview() {
         return this.view;
     }
 
-    /**
-     * creates restart button
-     *
-     * @return the restart button
-     */
+    
+     // erstellt den restart Button 
+    
     public JButton restartButton() {
         JButton button = new JButton("Restart");
         button.setPreferredSize(new Dimension(20, 40));
@@ -102,9 +89,7 @@ public class View extends JPanel implements Observer {
 
     }
 
-    /**
-     * update Buttons
-     */
+    
     public void updateButtons() {
 
         removeButtons();
@@ -113,9 +98,7 @@ public class View extends JPanel implements Observer {
 
     }
 
-    /**
-     * delete buttons
-     */
+  
     private void removeButtons() {
         for (int i = 0; i < this.model.getHeight(); i++) {
             for (int j = 0; j < this.model.getWidth(); j++) {
@@ -128,9 +111,7 @@ public class View extends JPanel implements Observer {
 
     }
 
-    /**
-     * create buttons
-     */
+   
     private void buildbuttons() {
 
         for (int i = 0; i < this.model.getHeight(); i++) {
