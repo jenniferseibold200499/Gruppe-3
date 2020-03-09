@@ -79,9 +79,7 @@ public class Model extends Observable {
             @Override
             public void run() {
                 while (running) {
-
                     try {
-
                         addTimer();
                         setChanged();
                         notifyObservers();
@@ -91,7 +89,6 @@ public class Model extends Observable {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
-
                 }
 
             }
