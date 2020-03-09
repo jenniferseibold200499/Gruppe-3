@@ -20,7 +20,7 @@ public class Controller extends MouseAdapter {
     }
 
     /**
-     * für Änderungen des Typs field (Spielfeld)
+     * für Aenderungen des Typs field (Spielfeld)
      */
     public void updateField(Field field) {
         this.field = field;

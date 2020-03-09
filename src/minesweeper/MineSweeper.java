@@ -8,9 +8,8 @@ import javax.swing.JFrame;
 public class MineSweeper {
 
     /**
-     * Starts your Minesweeper Game
-     * @param argv You can either pass your Level as parameter of 3 parameters for
-     *             width, heigth and bombs
+     * Startet das Spiel
+     * @param argv Spiellevel auswaehlen mit Hoehe, Breite und Anzahl der Bomben
      * @throws IOException
      */
     public static void main(String[] argv) throws IOException {
@@ -19,11 +18,11 @@ public class MineSweeper {
         int height = -1;
         int bombs = -1;
 
-        //Set the Modus
+        //Spiellevel auswaehlen
         if (argv.length == 1) {
             input = argv[0];
         }
-        //Set the width, height and the number of Bombs
+        //Hoehe, Breite und Anzahl der Bomben waehlen
         if (argv.length == 3) {
             width = Integer.parseInt(argv[0]);
             height = Integer.parseInt(argv[1]);
@@ -38,7 +37,7 @@ public class MineSweeper {
         
         System.out.println("Modes: Beginner/Intermediate/Expert/Custom");
 
-        //Annoy the user until he chooses something
+        //Nutzer waehlt Schwierigkeit aus
         while (!input.equals("Beginner")
                 && !input.equals("beginner")
                 && !input.equals("Intermediate")
@@ -52,7 +51,7 @@ public class MineSweeper {
             input = scan.nextLine();
         }
 
-        //Sets the specific Variables for the modes
+        //Variablen der Level auswaehlen
         if (input.equals("Beginner") || input.equals("beginner")) {
             width = 9;
             height = 9;
@@ -93,17 +92,17 @@ public class MineSweeper {
                 System.out.print("Plese enter the number of Bombs (min:1/max:" + maxbombs + "): ");
                 bombs = scan.nextInt();
             }
-            //Creating the Model with the desired values
+            //Erzeugt Model mit den unten genannten Variablen
             model = new Model(width, height, bombs);
         }
         
-        //Information about the game
+        //Spielinformationen anzeigen lassen
         System.out.println("\n\nCreating Minesweeper:");
         System.out.println("Heigth: " + height);
         System.out.println("Width: " + width);
         System.out.println("Bombs: " + bombs);
 
-        //Creating the View
+        //Erzeugt den View
         View view = new View(model);
 
         JFrame frame = new JFrame("Minesweeper");
