@@ -38,7 +38,6 @@ public class View extends JPanel implements Observer {
 		this.view.setLayout(new GridLayout(model.getHeight(), model.getWidth()));
 		buildbuttons();
 		this.add(view, BorderLayout.SOUTH);
-
 	}
 
 	// erneuerung der View
@@ -53,20 +52,18 @@ public class View extends JPanel implements Observer {
 		this.bombs = setLabel(this.bombs, "Bombs:  " + Integer.toString(model.remainingBombs()));
 		this.gameState = setLabel(this.gameState, "Status:  " + model.getState());
 		this.timer = setLabel(this.timer, "Time:  " + this.model.getTimer());
-
 	}
 
 	// string macht den Text
 
 	private JLabel setLabel(JLabel label, String string) {
-		if (!(label instanceof JLabel)) {
+		if (label == null) {
 			label = new JLabel("");
 		}
 		label.setText(string);
 		label.setPreferredSize(new Dimension(100, 40));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		return label;
-
 	}
 
 	// return view
@@ -83,40 +80,29 @@ public class View extends JPanel implements Observer {
 		Controller controller = new Controller(model);
 		button.addMouseListener(controller);
 		return button;
-
 	}
 
 	public void updateButtons() {
-
 		removeButtons();
-
 		buildbuttons();
-
 	}
 
 	private void removeButtons() {
 		for (int i = 0; i < this.model.getHeight(); i++) {
 			for (int j = 0; j < this.model.getWidth(); j++) {
-
 				this.view.remove(fields[i][j].getButton());
-
 			}
-
 		}
-
 	}
 
 	private void buildbuttons() {
-
 		for (int i = 0; i < this.model.getHeight(); i++) {
 			for (int j = 0; j < this.model.getWidth(); j++) {
 				ButtonView button = new ButtonView(this.model.getField(i, j));
 				fields[i][j] = button;
 				this.view.add(button.getButton());
 				//test
-
 			}
-
 		}
 	}
 }
