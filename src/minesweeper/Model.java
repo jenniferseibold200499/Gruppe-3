@@ -74,7 +74,6 @@ public class Model extends Observable {
     private void setThread() {
 
         this.thread = new Thread() {
-            @SuppressWarnings("static-access")
             //if running = true timer increments every second by 1
             @Override
             public void run() {
@@ -86,7 +85,6 @@ public class Model extends Observable {
                         this.sleep(1000);
 
                     } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }
