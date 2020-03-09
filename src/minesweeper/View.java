@@ -113,6 +113,7 @@ public class View extends JPanel implements Observer {
 				ButtonView button = new ButtonView(this.model.getField(i, j));
 				fields[i][j] = button;
 				this.view.add(button.getButton());
+				//test
 
 			}
 
