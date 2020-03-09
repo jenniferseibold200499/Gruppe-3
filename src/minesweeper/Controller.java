@@ -21,7 +21,6 @@ public class Controller extends MouseAdapter {
 
     /**
      * für Änderungen des Typs field (Spielfeld)
-     * @param field
      */
     public void updateField(Field field) {
         this.field = field;
