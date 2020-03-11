@@ -52,48 +52,56 @@ public class MineSweeper {
         }
 
         //Variablen der Level auswaehlen
-        if (input.equals("Beginner") || input.equals("beginner")) {
-            width = 9;
-            height = 9;
-            bombs = 10;
-            model = new Model(width, height, bombs);
-        } else if (input.equals("Intermediate") || input.equals("intermediate")) {
-            width = 16;
-            height = 16;
-            bombs = 40;
-            model = new Model(width, height, bombs);
-        } else if (input.equals("Expert") || input.equals("expert")) {
-            width = 30;
-            height = 16;
-            bombs = 99;
-            model = new Model(width, height, bombs);
-        } else {
+        switch (input) {
+            case "Beginner":
+            case "beginner":
+                width = 9;
+                height = 9;
+                bombs = 10;
+                model = new Model(width, height, bombs);
+                break;
+            case "Intermediate":
+            case "intermediate":
+                width = 16;
+                height = 16;
+                bombs = 40;
+                model = new Model(width, height, bombs);
+                break;
+            case "Expert":
+            case "expert":
+                width = 30;
+                height = 16;
+                bombs = 99;
+                model = new Model(width, height, bombs);
+                break;
+            default:
 
-            System.out.println();
-            while (width < 6 || width > 35) {
+                System.out.println();
+                while (width < 6 || width > 35) {
 
-                System.out.print("Enter your desired width (min:6/max:35): ");
-                width = scan.nextInt();
+                    System.out.print("Enter your desired width (min:6/max:35): ");
+                    width = scan.nextInt();
 
-            }
+                }
 
-            System.out.println();
-            while (height < 6 || height > 20) {
+                System.out.println();
+                while (height < 6 || height > 20) {
 
-                System.out.print("Enter your desired heigth (min:6/max:20): ");
-                height = scan.nextInt();
+                    System.out.print("Enter your desired heigth (min:6/max:20): ");
+                    height = scan.nextInt();
 
-            }
+                }
 
-            int maxbombs = height * width - 1;
+                int maxbombs = height * width - 1;
 
-            System.out.println();
-            while (bombs < 1 || bombs > maxbombs) {
-                System.out.print("Plese enter the number of Bombs (min:1/max:" + maxbombs + "): ");
-                bombs = scan.nextInt();
-            }
-            //Erzeugt Model mit den unten genannten Variablen
-            model = new Model(width, height, bombs);
+                System.out.println();
+                while (bombs < 1 || bombs > maxbombs) {
+                    System.out.print("Plese enter the number of Bombs (min:1/max:" + maxbombs + "): ");
+                    bombs = scan.nextInt();
+                }
+                //Erzeugt Model mit den unten genannten Variablen
+                model = new Model(width, height, bombs);
+                break;
         }
         
         //Spielinformationen anzeigen lassen
